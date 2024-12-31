@@ -1,0 +1,132 @@
+:root {
+    --linear-grad: linear-gradient(to right, #141E30, #243B55);
+    --grad-clr1: #141E30;
+    --grad-clr2: #243B55;
+}
+
+.std_signup {
+    height: 100vh;
+    background: #f6f5f7;
+    display: grid;
+    place-content: center;
+}
+
+.std_signup .container {
+    position: relative;
+    /* width: 850px;
+    height: 450px; */
+    background-color: #FFF;
+    box-shadow: 25px 30px 55px #5557;
+    border-radius: 13px;
+    overflow: hidden;
+}
+
+.form-container {
+    /* position: absolute; */
+    height: 100%;
+    padding: 0px 40px;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    z-index: 2;
+}
+
+form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+.infield {
+    position: relative;
+    margin: 8px 0px;
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: #f3f3f3;
+    border: none;
+    outline: none;
+}
+
+label {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    background: var(--linear-grad);
+    transition: 0.3s;
+}
+
+input:focus ~ label {
+    width: 100%;
+}
+/* 
+button {
+    border-radius: 20px;
+    color: #FFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+} */
+
+.form-container button {
+    margin-top: 17px;
+}
+
+.overlay-container {
+    position: relative;
+    /* top: 0;
+    left: 60%;
+    width: 40%;
+    height: 100%; */
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 9;
+}
+
+.overlay {
+    position: relative;
+    background: var(--linear-grad);
+    color: #FFF;
+    height: 100%;
+    /* width: 250%; */
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-panel {
+    /* position: absolute; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 40px;
+    text-align: center;
+    height: 100%;
+    /* width: 340px; */
+    transition: 0.6s ease-in-out;
+}
+
+.overlay-panel h1 {
+    color: #FFF;
+}
+
+.overlay-panel p {
+    color: #FFF;
+    font-size: 16px;
+    width: 90%;
+    text-wrap: wrap;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 15px 0px 35px;
+}
