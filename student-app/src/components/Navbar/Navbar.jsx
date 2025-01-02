@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { IoMdMenu } from "react-icons/io";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom"; 
 import { Link } from 'react-scroll';
+import { useAuth } from '../../AuthContext';
 import "./Navbar.css";
 
 const NavbarMenu = [
@@ -25,7 +26,8 @@ const NavbarMenu = [
 
 const Navbar = () => {
     const [sticky, setSticky] = useState(false);
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate(); 
+    const { auth } = useAuth();
 
     useEffect(() => {
         window.addEventListener('scroll', () => {
@@ -36,6 +38,14 @@ const Navbar = () => {
     const [mobileMenu, setMobileMenu] = useState(false);
     const toggleMenu = () => {
         mobileMenu ? setMobileMenu(false) : setMobileMenu(true);
+    };
+
+    const handleLearnClick = () => {
+        if (auth.isAuthenticated) {
+            navigate('/classes');
+        } else {
+            navigate('/login');
+        }
     };
 
     return (
@@ -64,17 +74,25 @@ const Navbar = () => {
                         </li>
                         {NavbarMenu.map((menu) => (
                             <li key={menu.id}>
-                                <Link to={menu.path} smooth={true} offset={-100} duration={500}
+                                {/* { */}
+                                    <Link to={menu.path} smooth={true} offset={-100} duration={500}
                                     className='inline-block py-2 px-3 hover:text-secondary relative cursor-pointer group'
                                 >
                                     <div className="w-2 h-2 bg-secondary absolute mr-2 rounded-full left-1/2 -translate-x-1/2 top-3/4 bottom-0 group-hover:block hidden"></div>
                                     {menu.title}
                                 </Link>
+                                {/* || <a href={`/#${menu.path}`} 
+                                    className='inline-block py-2 px-3 hover:text-secondary relative cursor-pointer group'
+                                >
+                                    <div className="w-2 h-2 bg-secondary absolute mr-2 rounded-full left-1/2 -translate-x-1/2 top-3/4 bottom-0 group-hover:block hidden"></div>
+                                    {menu.title}
+                                </a>
+                                } */}
                             </li>
                         ))}
                         <button
                             className="primary-btn"
-                            onClick={() => navigate("/classes")} // Navigate to Classes page on click
+                            onClick={handleLearnClick} 
                         >
                             Learn
                         </button>

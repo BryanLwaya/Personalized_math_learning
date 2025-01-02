@@ -56,7 +56,7 @@ const SlideLeft = (delay) => {
 
 const Services = () => {
     return (
-        <section className='bg-white services'>
+        <section className='bg-white services' id='services'>
             <div className="container pb-14 pt-16">
                 <h1 className='text-4xl font-bold text-left pb-10'>
                     What Will You Learn?

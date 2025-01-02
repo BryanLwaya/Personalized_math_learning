@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiMath } from "react-icons/bi";
 import { IoMdHappy } from "react-icons/io";
+import { useAuth } from "../../AuthContext"; 
+import { CiLogout } from "react-icons/ci";
+import { IoIosArrowDown } from "react-icons/io";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import axios from "axios";
 
 const EnrolledClasses = [
   {
@@ -22,30 +27,50 @@ const EnrolledClasses = [
   },
 ];
 
-const Sidebar = ({ classes }) => {
+const Sidebar = ({ classes, userName }) => {
+  const { auth, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
 
+  const handleLogout = async () => {
+    try {
+      await axios.post("http://localhost:5000/auth/logout", {}, {
+        headers: { Authorization: `Bearer ${auth.access_token}` },
+      });
+
+      // Call the logout method from AuthContext
+      logout();
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   return (
-    <div className="h-screen w-64 bg-[#f1f1f1] text-black flex flex-col justify-between drop-shadow-lg">
+    <div className="h-screen w-64 bg-[#fff] text-black flex flex-col justify-between drop-shadow-lg">
       {/* Top Section */}
       <div>
-        <div className="p-4">
-          <h1 className="text-2xl font-bold">MathGoal</h1>
+        <div className="px-4 pt-5">
+          <h1 className="text-2xl font-bold text-gray-800">
+            Welcome, {userName.split(" ")[0]}
+          </h1>
         </div>
-        <div className="mt-4">
+        <div className="mt-3">
           {/* My Classes Dropdown */}
           <div
-            className="p-4 cursor-pointer hover:bg-primary hover:bg-opacity-70 transition-all duration-500 ease-in-out"
+            className="flex items-center px-4 py-2 mb-1 cursor-pointer hover:bg-gray-400 hover:bg-opacity-30 transition-all duration-500 ease-in-out"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <span className="text-lg font-semibold">My Classes</span>
+            {
+              isDropdownOpen ? <IoIosArrowDown className="ml-2"/> : <MdKeyboardArrowRight className="ml-2"/> 
+            }
+            
           </div>
           {isDropdownOpen && (
             <ul className="space-y-0">
               {classes.map((classItem) => (
                 <li
                   key={classItem.id}
-                  className="flex items-center p-3 cursor-pointer transition relative hover:bg-primary hover:bg-opacity-20 hover:text-black"
+                  className="flex items-center px-3 py-2 mb-2 mx-3 cursor-pointer transition relative bg-gray-200 rounded-lg hover:bg-secondary hover:bg-opacity-30 hover:text-black"
                 >
                   <span className="mr-3">{classItem.icon}</span>
                   <span className="flex-grow">{classItem.title}</span>
@@ -58,26 +83,57 @@ const Sidebar = ({ classes }) => {
       </div>
 
       {/* Bottom Section */}
-      <div>
-        <a
-          href="/"
-          className="p-4 flex items-center hover:bg-primary hover:bg-opacity-20 transition-all duration-500"
+      <div className="w-full flex justify-start px-4 pb-3">
+        <button
+          onClick={handleLogout}
+          className="py-3 px-2 flex items-center font-semibold rounded-md w-[90%] hover:bg-red-500 hover:text-white transition-all duration-500"
         >
-          <span className="mr-3">🏠</span>
-          <span>Home</span>
-        </a>
+          <CiLogout className="mr-4 "/>
+          <span>Logout</span>
+        </button>
       </div>
     </div>
   );
 };
 
 const Classes = () => {
-  const navigate = useNavigate(); // Use navigate hook
+  const navigate = useNavigate();
+  const { auth } = useAuth();
+  const [userInitials, setUserInitials] = useState("U");
+  const [userName, setUserName] = useState("Student");
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/users/${auth.user_id}`);
+
+        // Set user's full name
+        setUserName(response.data.name);
+
+        // Set user's initials
+        const initials = response.data.name
+          .split(" ")
+          .map((word) => word[0])
+          .join("")
+          .toUpperCase();
+        setUserInitials(initials);
+      } catch (error) {
+        console.error("Error fetching user data:", error); // Log errors
+      }
+    };
+
+    if (auth.user_id) {
+      fetchUser();
+    } else {
+      console.warn("No user ID found in context");
+    }
+  }, [auth.user_id]);
+
 
   return (
     <div className="flex">
       {/* Sidebar */}
-      <Sidebar classes={EnrolledClasses} />
+      <Sidebar classes={EnrolledClasses} userName={userName} />
 
       {/* Main Content */}
       <div className="flex-1 min-h-screen bg-gray-100 p-6">
@@ -91,16 +147,14 @@ const Classes = () => {
             >
               Join a Class
             </button>
-            <img
-              src="https://via.placeholder.com/40"
-              alt="Profile"
-              className="w-10 h-10 rounded-full object-cover border border-gray-300"
-            />
+            <div className="w-12 h-12 flex items-center justify-center rounded-full bg-secondary text-white text-lg font-semibold border border-gray-300">
+              {userInitials || ""}
+            </div>
           </div>
         </div>
 
         {/* Classes Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {EnrolledClasses.map((classItem) => (
             <div
               key={classItem.id}

@@ -130,3 +130,18 @@ button {
     letter-spacing: 0.5px;
     margin: 15px 0px 35px;
 }
+
+.overlay-panel a {
+    border: 3px solid white;
+    padding: 10px 30px;
+    border-radius: 20px;
+    font-weight: bold;
+    transition: ease-in-out .2s;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.overlay-panel a:hover {
+    background: white;
+    color: var(--grad-clr1);
+}

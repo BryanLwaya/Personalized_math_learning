@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const Banner2 = () => {
     return (
-        <section className='about-us'>
+        <section className='about-us' id='about-us'>
             <div className='container py-14 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 space-y-6 md:space-y-0'>
                 {/* Banner Text */}
                 <motion.div 
