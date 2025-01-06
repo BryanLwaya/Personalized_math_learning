@@ -4,19 +4,24 @@ import Navbar from '../../components/NavBar/NavBar';
 import { MdError } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Verify from '../../components/AuthComps/Verify'; // Import Verify popup
-import { useAuth } from '../../AuthContext'; // Import AuthContext for login
+import Verify from '../../components/AuthComps/Verify'; 
+import { useAuth } from '../../AuthContext'; 
 
 const Login = () => {
     const navigate = useNavigate();
     const { login, auth } = useAuth(); 
     const [formData, setFormData] = useState({ email: '', password: '' });
     const [showVerifyPopup, setShowVerifyPopup] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(''); // State for error message
+    const [errorMessage, setErrorMessage] = useState(''); 
 
     useEffect(() => {
         if (auth.isAuthenticated) {
-            navigate('/classes');
+            // Redirect based on role (optional fallback to /classes)
+            if (auth.role === 'teacher') {
+                navigate('/teacher-dashboard');
+            } else {
+                navigate('/classes');
+            }
         }
     }, [auth, navigate]);
 
@@ -32,8 +37,13 @@ const Login = () => {
             const response = await axios.post('http://localhost:5000/auth/login', formData);
 
             if (response.data.access_token) {
-                login(response.data.access_token, response.data.user_id);
-                navigate('/classes');
+                // Store token, userId, and role in context
+                login(response.data.access_token, response.data.user_id, response.data.role);
+                if (response.data.role === 'teacher') {
+                    navigate('/teacher-dashboard');
+                } else {
+                    navigate('/classes');
+                }
             }
         } catch (error) {
             if (error.response && error.response.status === 403) {

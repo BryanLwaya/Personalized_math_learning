@@ -1,89 +1,77 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { FaBook, FaArrowLeft, FaLock, FaPlayCircle } from "react-icons/fa";
+import axios from "axios";
+import { useAuth } from "../../AuthContext";
+import StudentTasks from "./StudentTasks";
+import StudentSidebar from "./StudentSidebar";
 
-const lessons = [
-    { id: 1, title: "Introduction", icon: <FaPlayCircle /> },
-    { id: 2, title: "Deep Dive", icon: <FaLock /> },
-    { id: 3, title: "Exploring the Basics", icon: <FaLock /> },
-    { id: 4, title: "Outro", icon: <FaLock /> },
-];
-
-const ViewClass = ({ classes }) => {
-    const { id } = useParams();
+const ViewClass = () => {
+    const { id: class_id } = useParams();
     const navigate = useNavigate();
-    const selectedClass = classes.find((classItem) => classItem.id === parseInt(id));
-    const [activeLesson, setActiveLesson] = useState(lessons[0].id); // Set the first lesson as active by default
+    const { auth } = useAuth();
+    const [classDetails, setClassDetails] = useState(null);
+    const [userInitials, setUserInitials] = useState("");
+    const [activeTab, setActiveTab] = useState("tasks");
 
-    if (!selectedClass) {
-        return <div>Class not found</div>;
+    useEffect(() => {
+        const fetchUserClassDetails = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/class/${class_id}`);
+                setClassDetails(response.data);
+
+                const userResponse = await axios.get(`http://localhost:5000/users/${auth.user_id}`);
+
+                const initials = userResponse.data.name
+                    .split(" ")
+                    .map((word) => word[0])
+                    .join("")
+                    .toUpperCase();
+                setUserInitials(initials);
+            } catch (error) {
+                console.error("Error fetching class details:", error);
+            }
+        };
+
+        fetchUserClassDetails();
+    }, [auth.user_id, class_id]);
+
+    if (!classDetails) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500" role="status">
+                    <span className="sr-only"></span>
+                </div>
+            </div>
+        );
     }
 
     return (
         <div className="flex h-screen">
             {/* Sidebar */}
-            <div className="w-1/4 bg-[#f1f1f1] text-black flex flex-col justify-between drop-shadow-lg">
-                <div className="p-4">
-                    <button className="primary-btn w-full text-white py-2 rounded mb-6 transition">
-                        Start New Lesson
-                    </button>
-                    <ul className="space-y-0">
-                        {lessons.map((lesson) => (
-                            <li
-                                key={lesson.id}
-                                className={`flex items-center p-3 cursor-pointer transition relative ${activeLesson === lesson.id
-                                        ? "bg-primary bg-opacity-20 text-black"
-                                        : "hover:bg-gray-200"
-                                    }`}
-                                onClick={() => setActiveLesson(lesson.id)}
-                            >
-                                <span className="mr-3">{lesson.icon}</span>
-                                <span className="flex-grow">{lesson.title}</span>
-                                {activeLesson === lesson.id && (
-                                    <div className="absolute top-0 right-0 h-full w-1 bg-primary" />
-                                )}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className="p-4">
-                    <button
-                        className="flex items-center w-full text-gray-700 hover:bg-gray-300 hover:text-black p-3 rounded transition"
-                        onClick={() => navigate("/classes")}
-                    >
-                        <FaArrowLeft className="mr-3" />
-                        Back to Classes
-                    </button>
-                </div>
-            </div>
+            <StudentSidebar classDetails={classDetails} activeTab={activeTab} setActiveTab={setActiveTab} />
 
             {/* Main Content */}
-            <div className="flex-1 bg-gray-100 p-6">
-                {/* Header */}
-                <div className="flex justify-between items-center mb-6">
-                    <div>
-                        <h1 className="text-3xl font-bold text-gray-800">{selectedClass.title}</h1>
-                        <p className="text-gray-600">{selectedClass.subTopic}</p>
+            <div className="flex-1 bg-gray-100">
+                {/* Header Section */}
+                <div className="flex justify-between items-center px-6 py-4 border-b-2">
+                    <div></div>
+                    <div
+                        className="w-12 h-12 flex items-center justify-center rounded-full bg-secondary text-white font-bold"
+                        title="Your Initials"
+                    >
+                        {userInitials}
                     </div>
-                    <img
-                        src="https://via.placeholder.com/50"
-                        alt="Profile"
-                        className="w-12 h-12 rounded-full object-cover border border-gray-300"
-                    />
                 </div>
 
-                {/* Main Body */}
-                <div className="bg-white p-6 rounded shadow">
-                    <h2 className="text-2xl font-bold mb-4">Class Details</h2>
-                    <p>
-                        <strong>Teacher:</strong> {selectedClass.teacher}
-                    </p>
-                    <p className="mt-4">
-                        Welcome to the {selectedClass.title} class. Select a lesson from the sidebar to get started!
-                    </p>
-                    <p className="mt-4">
-                        <strong>Active Lesson:</strong> {lessons.find((lesson) => lesson.id === activeLesson)?.title}
-                    </p>
+                {/* Main Content */}
+                <div className="p-6">
+                    {activeTab === "tasks" && <StudentTasks class_id={class_id} />}
+                    {activeTab === "comments" && (
+                        <div>
+                            <h2 className="text-2xl font-bold mb-4">Comments</h2>
+                            <p>Comments section will be displayed here.</p>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

@@ -1,34 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { BiMath } from "react-icons/bi";
-import { IoMdHappy } from "react-icons/io";
 import { useAuth } from "../../AuthContext"; 
 import { CiLogout } from "react-icons/ci";
 import { IoIosArrowDown } from "react-icons/io";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import axios from "axios";
-
-const EnrolledClasses = [
-  {
-    id: 1,
-    title: "Solve Equations",
-    subTopic: "Equations Basics",
-    teacher: "Mr. John Doe",
-    link: "/view-class/1",
-    icon: <BiMath />,
-  },
-  {
-    id: 2,
-    title: "Understand Questions",
-    subTopic: "Critical Thinking",
-    teacher: "Ms. Jane Smith",
-    link: "/view-class/2",
-    icon: <IoMdHappy />,
-  },
-];
+import Classbg from "../../assets/class_bg.jpg";
 
 const Sidebar = ({ classes, userName }) => {
   const { auth, logout } = useAuth();
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(true);
 
   const handleLogout = async () => {
@@ -37,8 +19,7 @@ const Sidebar = ({ classes, userName }) => {
         headers: { Authorization: `Bearer ${auth.access_token}` },
       });
 
-      // Call the logout method from AuthContext
-      logout();
+      logout(); // Call the logout method from AuthContext
     } catch (error) {
       console.error("Error during logout:", error);
     }
@@ -60,21 +41,22 @@ const Sidebar = ({ classes, userName }) => {
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
             <span className="text-lg font-semibold">My Classes</span>
-            {
-              isDropdownOpen ? <IoIosArrowDown className="ml-2"/> : <MdKeyboardArrowRight className="ml-2"/> 
-            }
-            
+            {isDropdownOpen ? (
+              <IoIosArrowDown className="ml-2" />
+            ) : (
+              <MdKeyboardArrowRight className="ml-2" />
+            )}
           </div>
           {isDropdownOpen && (
             <ul className="space-y-0">
               {classes.map((classItem) => (
                 <li
-                  key={classItem.id}
+                  key={classItem._id}
                   className="flex items-center px-3 py-2 mb-2 mx-3 cursor-pointer transition relative bg-gray-200 rounded-lg hover:bg-secondary hover:bg-opacity-30 hover:text-black"
+                  onClick={() => navigate(`/view-class/${classItem._id}`)}
                 >
-                  <span className="mr-3">{classItem.icon}</span>
-                  <span className="flex-grow">{classItem.title}</span>
-                  <div className="absolute top-0 right-0 h-full w-1 bg-primary opacity-0 hover:opacity-100 transition" />
+                  <span className="mr-3">{classItem.icon || <BiMath />}</span>
+                  <span className="flex-grow">{classItem.class_name}</span>
                 </li>
               ))}
             </ul>
@@ -88,7 +70,7 @@ const Sidebar = ({ classes, userName }) => {
           onClick={handleLogout}
           className="py-3 px-2 flex items-center font-semibold rounded-md w-[90%] hover:bg-red-500 hover:text-white transition-all duration-500"
         >
-          <CiLogout className="mr-4 "/>
+          <CiLogout className="mr-4 " />
           <span>Logout</span>
         </button>
       </div>
@@ -101,39 +83,39 @@ const Classes = () => {
   const { auth } = useAuth();
   const [userInitials, setUserInitials] = useState("U");
   const [userName, setUserName] = useState("Student");
+  const [enrolledClasses, setEnrolledClasses] = useState([]);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUserAndClasses = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/users/${auth.user_id}`);
+        // Fetch user data
+        const userResponse = await axios.get(`http://localhost:5000/users/${auth.user_id}`);
+        setUserName(userResponse.data.name);
 
-        // Set user's full name
-        setUserName(response.data.name);
-
-        // Set user's initials
-        const initials = response.data.name
+        const initials = userResponse.data.name
           .split(" ")
           .map((word) => word[0])
           .join("")
           .toUpperCase();
         setUserInitials(initials);
+
+        // Fetch enrolled classes
+        const enrollmentResponse = await axios.get(`http://localhost:5000/enrollments/${auth.user_id}`);
+        setEnrolledClasses(enrollmentResponse.data);
       } catch (error) {
-        console.error("Error fetching user data:", error); // Log errors
+        console.error("Error fetching user or class data:", error);
       }
     };
 
     if (auth.user_id) {
-      fetchUser();
-    } else {
-      console.warn("No user ID found in context");
+      fetchUserAndClasses();
     }
   }, [auth.user_id]);
-
 
   return (
     <div className="flex">
       {/* Sidebar */}
-      <Sidebar classes={EnrolledClasses} userName={userName} />
+      <Sidebar classes={enrolledClasses} userName={userName} />
 
       {/* Main Content */}
       <div className="flex-1 min-h-screen bg-gray-100 p-6">
@@ -143,7 +125,7 @@ const Classes = () => {
           <div className="flex items-center space-x-4">
             <button
               className="primary-btn text-white px-4 py-2 rounded"
-              onClick={() => navigate("/join-class")} // Navigate to /join-class
+              onClick={() => navigate("/join-class")}
             >
               Join a Class
             </button>
@@ -155,16 +137,16 @@ const Classes = () => {
 
         {/* Classes Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {EnrolledClasses.map((classItem) => (
+          {enrolledClasses.map((classItem) => (
             <div
-              key={classItem.id}
+              key={classItem._id}
               className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition"
             >
               {/* Class Image */}
               <div className="h-40 bg-gray-300">
                 <img
-                  src="https://via.placeholder.com/300" // Placeholder image
-                  alt={classItem.title}
+                  src={Classbg}
+                  alt={classItem.class_name}
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -172,11 +154,10 @@ const Classes = () => {
               {/* Class Content */}
               <div className="p-4">
                 <h2 className="text-lg font-bold text-gray-800">
-                  {classItem.title}
+                  {classItem.class_name}
                 </h2>
-                <p className="text-sm text-gray-600">{classItem.subTopic}</p>
                 <p className="text-sm text-gray-500 mt-2">
-                  Teacher: {classItem.teacher}
+                  Teacher: {classItem.teacher_name || "N/A"}
                 </p>
               </div>
 
@@ -184,7 +165,7 @@ const Classes = () => {
               <div className="px-4 pb-4">
                 <button
                   className="bg-primary text-white px-4 py-2 rounded primary-btn transition w-full"
-                  onClick={() => navigate(classItem.link)}
+                  onClick={() => navigate(`/view-class/${classItem._id}`)}
                 >
                   View Class
                 </button>

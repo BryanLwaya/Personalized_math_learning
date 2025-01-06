@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated: false,
         access_token: null,
         user_id: null,
+        role: null, // Added role
     });
 
     const navigate = useNavigate();
@@ -15,22 +16,30 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const storedToken = localStorage.getItem("access_token");
         const storedUserId = localStorage.getItem("user_id");
+        const storedRole = localStorage.getItem("role"); // Retrieve role from localStorage
 
-        if (storedToken && storedUserId) {
-            setAuth({ isAuthenticated: true, access_token: storedToken, user_id: storedUserId });
+        if (storedToken && storedUserId && storedRole) {
+            setAuth({
+                isAuthenticated: true,
+                access_token: storedToken,
+                user_id: storedUserId,
+                role: storedRole,
+            });
         }
     }, []);
 
-    const login = (token, userId) => {
-        setAuth({ isAuthenticated: true, access_token: token, user_id: userId });
+    const login = (token, userId, role) => {
+        setAuth({ isAuthenticated: true, access_token: token, user_id: userId, role });
         localStorage.setItem("access_token", token);
         localStorage.setItem("user_id", userId);
+        localStorage.setItem("role", role); // Store role
     };
 
     const logout = () => {
-        setAuth({ isAuthenticated: false, access_token: null, user_id: null });
+        setAuth({ isAuthenticated: false, access_token: null, user_id: null, role: null });
         localStorage.removeItem("access_token");
-        localStorage.removeItem("user_id"); 
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("role"); // Clear role
         navigate("/login");
     };
 
