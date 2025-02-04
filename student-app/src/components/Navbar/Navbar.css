@@ -1,0 +1,39 @@
+.dark-nav {
+    background: #f7f7f7d0;
+    transition: .4s;
+}
+
+.menu-icon {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    nav{
+        padding: 15px 0;
+    }
+    nav ul.nav-items{
+        display: block;
+        position: fixed;
+        top: 0;
+        right: 0px;
+        bottom: 0;
+        background: #f7f7f7;
+        z-index: -1;
+        width: 200px;
+        padding-top: 90px;
+        padding-left: 20px;
+        transition: .5s;
+        /* align-items: flex-start; */
+        /* flex-direction: column; */
+    }
+    nav .nav-items li, .nav-items button {
+        display: block;
+        margin: 20px 10px;
+    }
+    .hide-menu {
+        right: -200px !important;
+    }
+    .menu-icon{
+        display: block;
+    }
+}
