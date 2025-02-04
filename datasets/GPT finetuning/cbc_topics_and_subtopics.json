@@ -1,0 +1,98 @@
+[
+    {
+        "topic_name": "Data Handling",
+        "subtopics": [
+            {
+                "subtopic_name": "Data",
+                "objective": "Identify materials for data collection and recording in real life situations."
+            }
+        ]
+    },
+    {
+        "topic_name": "Geometry",
+        "subtopics": [
+            {
+                "subtopic_name": "Position and Direction",
+                "objective": "Identify a clockwise and an anti-clockwise turn in the environment."
+            },
+            {
+                "subtopic_name": "Angles",
+                "objective": "Identify an angle at a point in lines."
+            },
+            {
+                "subtopic_name": "Plane Figures",
+                "objective": "Identify rectangles, squares, triangles, circles and ovals from objects in the environment."
+            }
+        ]
+    },
+    {
+        "topic_name": "Measurement",
+        "subtopics": [
+            {
+                "subtopic_name": "Length",
+                "objective": "Measure length in centimetres, convert metres to centimetres and centimetres to metres in real life situation and work out perimeter of plane figures."
+            },
+            {
+                "subtopic_name": "Area",
+                "objective": "Compare the area of given surfaces by direct manipulation and calculate area of squares and rectangles by counting unit squares"
+            },
+            {
+                "subtopic_name": "Volume",
+                "objective": "Pile blocks into stacks of cubes and cuboids in real life situations and calculating their volume."
+            },
+            {
+                "subtopic_name": "Capacity",
+                "objective": "Measure capacity in litres in real life situations."
+            },
+            {
+                "subtopic_name": "Mass",
+                "objective": "Use a kilogram mass to measure masses of different objects practically."
+            },
+            {
+                "subtopic_name": "Time",
+                "objective": "Estimate time using a.m. and p.m., convert units of time , record time durations in hours and minutes, work out time duration in real life situations."
+            },
+            {
+                "subtopic_name": "Money",
+                "objective": "Convert shillings into cents and cents into shillings in different contexts."
+            }
+        ]
+    },
+    {
+        "topic_name": "Numbers",
+        "subtopics": [
+            {
+                "subtopic_name": "Whole Numbers",
+                "objective": "Use place value and total value of digits up to tens of thousands, identify factors of numbers upto 50, identify multiples of numbers up to 100 in different situations."
+            },
+            {
+                "subtopic_name": "Addition",
+                "objective": "Add up to two 4-digit numbers with single regrouping up to a sum of 10,000 and create patterns involving addition up to a sum of 10,000 in real life situations"
+            },
+            {
+                "subtopic_name": "Subtraction",
+                "objective": "Subtract up to 4-digit numbers without regrouping create patterns involving subtraction from up to 10,000 in real life situations."
+            },
+            {
+                "subtopic_name": "Multiplication",
+                "objective": "Multiply up to a two-digit number by a two-digit number in different situations."
+            },
+            {
+                "subtopic_name": "Division",
+                "objective": "Divide up to a two-digit number by a one-digit number with and without remainder."
+            },
+            {
+                "subtopic_name": "Fractions",
+                "objective": "Identify the numerator and denominator in a fraction in different situations."
+            },
+            {
+                "subtopic_name": "Decimals",
+                "objective": "Represent decimals using decimal notation in given situations."
+            },
+            {
+                "subtopic_name": "Use of Letters",
+                "objective": "Form simple expressions using letters to represent real life situations and simplify expressions representing real life situations."
+            }
+        ]
+    }
+]

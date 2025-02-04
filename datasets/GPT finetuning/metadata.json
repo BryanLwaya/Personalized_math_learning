@@ -1,0 +1,614 @@
+{
+  "curriculum_structure": {
+    "Numbers": {
+      "sub_topics": {
+        "Whole Numbers": {
+          "learning_objectives": [
+            "Use place value and total value of digits up to tens of thousands, identify factors of numbers upto 50, identify multiples of numbers up to 100 in different situations."
+          ],
+          "question_count": 48,
+          "difficulty_distribution": {
+            "basic": 25,
+            "intermediate": 20,
+            "advanced": 3
+          }
+        },
+        "Multiplication": {
+          "learning_objectives": [
+            "Multiply up to a two-digit number by a two-digit number in different situations."
+          ],
+          "question_count": 208,
+          "difficulty_distribution": {
+            "basic": 91,
+            "intermediate": 92,
+            "advanced": 25
+          }
+        },
+        "Division": {
+          "learning_objectives": [
+            "Divide up to a two-digit number by a one-digit number with and without remainder."
+          ],
+          "question_count": 22,
+          "difficulty_distribution": {
+            "basic": 13,
+            "intermediate": 5,
+            "advanced": 4
+          }
+        },
+        "Decimals": {
+          "learning_objectives": [
+            "Represent decimals using decimal notation in given situations."
+          ],
+          "question_count": 12,
+          "difficulty_distribution": {
+            "basic": 5,
+            "intermediate": 6,
+            "advanced": 1
+          }
+        },
+        "Subtraction": {
+          "learning_objectives": [
+            "Subtract up to 4-digit numbers without regrouping create patterns involving subtraction from up to 10,000 in real life situations."
+          ],
+          "question_count": 14,
+          "difficulty_distribution": {
+            "basic": 7,
+            "intermediate": 7,
+            "advanced": 0
+          }
+        },
+        "Addition": {
+          "learning_objectives": [
+            "Add up to two 4-digit numbers with single regrouping up to a sum of 10,000 and create patterns involving addition up to a sum of 10,000 in real life situations"
+          ],
+          "question_count": 41,
+          "difficulty_distribution": {
+            "basic": 22,
+            "intermediate": 18,
+            "advanced": 1
+          }
+        },
+        "Fractions": {
+          "learning_objectives": [
+            "Identify the numerator and denominator in a fraction in different situations."
+          ],
+          "question_count": 27,
+          "difficulty_distribution": {
+            "basic": 10,
+            "intermediate": 14,
+            "advanced": 3
+          }
+        }
+      },
+      "question_count": 372,
+      "difficulty_distribution": {
+        "basic": 173,
+        "intermediate": 162,
+        "advanced": 37
+      }
+    },
+    "Measurement": {
+      "sub_topics": {
+        "Time": {
+          "learning_objectives": [
+            "Estimate time using a.m. and p.m., convert units of time , record time durations in hours and minutes, work out time duration in real life situations."
+          ],
+          "question_count": 58,
+          "difficulty_distribution": {
+            "basic": 30,
+            "intermediate": 26,
+            "advanced": 2
+          }
+        },
+        "Money": {
+          "learning_objectives": [
+            "Convert shillings into cents and cents into shillings in different contexts."
+          ],
+          "question_count": 38,
+          "difficulty_distribution": {
+            "basic": 19,
+            "intermediate": 14,
+            "advanced": 5
+          }
+        },
+        "Area": {
+          "learning_objectives": [
+            "Compare the area of given surfaces by direct manipulation and calculate area of squares and rectangles by counting unit squares"
+          ],
+          "question_count": 4,
+          "difficulty_distribution": {
+            "basic": 1,
+            "intermediate": 1,
+            "advanced": 2
+          }
+        },
+        "Capacity": {
+          "learning_objectives": [
+            "Measure capacity in litres in real life situations."
+          ],
+          "question_count": 10,
+          "difficulty_distribution": {
+            "basic": 4,
+            "intermediate": 5,
+            "advanced": 1
+          }
+        },
+        "Mass": {
+          "learning_objectives": [
+            "Use a kilogram mass to measure masses of different objects practically."
+          ],
+          "question_count": 4,
+          "difficulty_distribution": {
+            "basic": 1,
+            "intermediate": 2,
+            "advanced": 1
+          }
+        },
+        "Length": {
+          "learning_objectives": [
+            "Measure length in centimetres, convert metres to centimetres and centimetres to metres in real life situation and work out perimeter of plane figures."
+          ],
+          "question_count": 4,
+          "difficulty_distribution": {
+            "basic": 1,
+            "intermediate": 2,
+            "advanced": 1
+          }
+        },
+        "Volume": {
+          "learning_objectives": [
+            "Pile blocks into stacks of cubes and cuboids in real life situations and calculating their volume."
+          ],
+          "question_count": 1,
+          "difficulty_distribution": {
+            "basic": 0,
+            "intermediate": 1,
+            "advanced": 0
+          }
+        }
+      },
+      "question_count": 119,
+      "difficulty_distribution": {
+        "basic": 56,
+        "intermediate": 51,
+        "advanced": 12
+      }
+    },
+    "Geometry": {
+      "sub_topics": {
+        "Angles": {
+          "learning_objectives": [
+            "Identify an angle at a point in lines."
+          ],
+          "question_count": 4,
+          "difficulty_distribution": {
+            "basic": 2,
+            "intermediate": 1,
+            "advanced": 1
+          }
+        },
+        "Plane Figures": {
+          "learning_objectives": [
+            "Identify rectangles, squares, triangles, circles and ovals from objects in the environment."
+          ],
+          "question_count": 4,
+          "difficulty_distribution": {
+            "basic": 2,
+            "intermediate": 2,
+            "advanced": 0
+          }
+        },
+        "Position and Direction": {
+          "learning_objectives": [
+            "Identify a clockwise and an anti-clockwise turn in the environment."
+          ],
+          "question_count": 1,
+          "difficulty_distribution": {
+            "basic": 0,
+            "intermediate": 1,
+            "advanced": 0
+          }
+        }
+      },
+      "question_count": 9,
+      "difficulty_distribution": {
+        "basic": 4,
+        "intermediate": 4,
+        "advanced": 1
+      }
+    }
+  },
+  "difficulty_metrics": {
+    "Numbers": {
+      "avg_solution_steps": 2.9516129032258065,
+      "difficulty_progression": {
+        "entry_level": "advanced",
+        "max_level": "intermediate"
+      },
+      "sub_topics": {
+        "Whole Numbers": {
+          "avg_solution_steps": 2.791666666666667,
+          "difficulty_distribution": {
+            "basic": 25,
+            "intermediate": 20,
+            "advanced": 3
+          }
+        },
+        "Multiplication": {
+          "avg_solution_steps": 3.0625,
+          "difficulty_distribution": {
+            "intermediate": 92,
+            "basic": 91,
+            "advanced": 25
+          }
+        },
+        "Division": {
+          "avg_solution_steps": 3.1818181818181817,
+          "difficulty_distribution": {
+            "basic": 13,
+            "intermediate": 5,
+            "advanced": 4
+          }
+        },
+        "Decimals": {
+          "avg_solution_steps": 2.916666666666667,
+          "difficulty_distribution": {
+            "intermediate": 6,
+            "basic": 5,
+            "advanced": 1
+          }
+        },
+        "Subtraction": {
+          "avg_solution_steps": 2.428571428571429,
+          "difficulty_distribution": {
+            "basic": 7,
+            "intermediate": 7
+          }
+        },
+        "Addition": {
+          "avg_solution_steps": 2.6097560975609757,
+          "difficulty_distribution": {
+            "basic": 22,
+            "intermediate": 18,
+            "advanced": 1
+          }
+        },
+        "Fractions": {
+          "avg_solution_steps": 3.0,
+          "difficulty_distribution": {
+            "intermediate": 14,
+            "basic": 10,
+            "advanced": 3
+          }
+        }
+      }
+    },
+    "Measurement": {
+      "avg_solution_steps": 2.9327731092436977,
+      "difficulty_progression": {
+        "entry_level": "advanced",
+        "max_level": "intermediate"
+      },
+      "sub_topics": {
+        "Time": {
+          "avg_solution_steps": 2.7241379310344827,
+          "difficulty_distribution": {
+            "basic": 30,
+            "intermediate": 26,
+            "advanced": 2
+          }
+        },
+        "Money": {
+          "avg_solution_steps": 2.973684210526316,
+          "difficulty_distribution": {
+            "basic": 19,
+            "intermediate": 14,
+            "advanced": 5
+          }
+        },
+        "Area": {
+          "avg_solution_steps": 4.25,
+          "difficulty_distribution": {
+            "advanced": 2,
+            "intermediate": 1,
+            "basic": 1
+          }
+        },
+        "Capacity": {
+          "avg_solution_steps": 3.2,
+          "difficulty_distribution": {
+            "intermediate": 5,
+            "basic": 4,
+            "advanced": 1
+          }
+        },
+        "Mass": {
+          "avg_solution_steps": 3.25,
+          "difficulty_distribution": {
+            "intermediate": 2,
+            "basic": 1,
+            "advanced": 1
+          }
+        },
+        "Length": {
+          "avg_solution_steps": 3.25,
+          "difficulty_distribution": {
+            "intermediate": 2,
+            "advanced": 1,
+            "basic": 1
+          }
+        },
+        "Volume": {
+          "avg_solution_steps": 3.0,
+          "difficulty_distribution": {
+            "intermediate": 1
+          }
+        }
+      }
+    },
+    "Geometry": {
+      "avg_solution_steps": 2.888888888888889,
+      "difficulty_progression": {
+        "entry_level": "advanced",
+        "max_level": "intermediate"
+      },
+      "sub_topics": {
+        "Angles": {
+          "avg_solution_steps": 3.25,
+          "difficulty_distribution": {
+            "basic": 2,
+            "advanced": 1,
+            "intermediate": 1
+          }
+        },
+        "Plane Figures": {
+          "avg_solution_steps": 2.5,
+          "difficulty_distribution": {
+            "intermediate": 2,
+            "basic": 2
+          }
+        },
+        "Position and Direction": {
+          "avg_solution_steps": 3.0,
+          "difficulty_distribution": {
+            "intermediate": 1
+          }
+        }
+      }
+    }
+  },
+  "learning_paths": {
+    "Numbers": {
+      "progression": [
+        "Subtraction",
+        "Decimals",
+        "Addition",
+        "Fractions",
+        "Whole Numbers",
+        "Division",
+        "Multiplication"
+      ],
+      "prerequisites": {},
+      "recommended_sequence": [
+        {
+          "sub_topic": "Subtraction",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Subtraction",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Decimals",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Decimals",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Decimals",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Addition",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Addition",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Addition",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Fractions",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Fractions",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Fractions",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Whole Numbers",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Whole Numbers",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Whole Numbers",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Division",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Division",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Division",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Multiplication",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Multiplication",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Multiplication",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    "Measurement": {
+      "progression": [
+        "Volume",
+        "Mass",
+        "Length",
+        "Capacity",
+        "Area",
+        "Time",
+        "Money"
+      ],
+      "prerequisites": {},
+      "recommended_sequence": [
+        {
+          "sub_topic": "Volume",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Mass",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Mass",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Mass",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Length",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Length",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Length",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Capacity",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Capacity",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Capacity",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Area",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Area",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Area",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Time",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Time",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Time",
+          "difficulty": "advanced"
+        },
+        {
+          "sub_topic": "Money",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Money",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Money",
+          "difficulty": "advanced"
+        }
+      ]
+    },
+    "Geometry": {
+      "progression": [
+        "Position and Direction",
+        "Plane Figures",
+        "Angles"
+      ],
+      "prerequisites": {},
+      "recommended_sequence": [
+        {
+          "sub_topic": "Position and Direction",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Plane Figures",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Plane Figures",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Angles",
+          "difficulty": "basic"
+        },
+        {
+          "sub_topic": "Angles",
+          "difficulty": "intermediate"
+        },
+        {
+          "sub_topic": "Angles",
+          "difficulty": "advanced"
+        }
+      ]
+    }
+  },
+  "system_configuration": {
+    "difficulty_levels": [
+      "basic",
+      "intermediate",
+      "advanced"
+    ],
+    "min_questions_per_topic": 3,
+    "max_questions_per_session": 10,
+    "time_limits": {
+      "basic": 300,
+      "intermediate": 450,
+      "advanced": 600
+    }
+  }
+}

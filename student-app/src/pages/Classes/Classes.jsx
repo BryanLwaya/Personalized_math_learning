@@ -21,6 +21,7 @@ const Sidebar = ({ classes, userName }) => {
 
       logout(); // Call the logout method from AuthContext
     } catch (error) {
+      logout();
       console.error("Error during logout:", error);
     }
   };
