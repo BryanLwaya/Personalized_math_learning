@@ -46,7 +46,7 @@ const JoinClass = () => {
                 <button className="flex space-x-4 items-center justify-around bg-gray-200 hover:bg-gray-300 w-fit rounded px-4 py-2 delay-200 ease-in-out transition-all" 
                 onClick={() => navigate("/classes")}
                 >
-                <IoMdArrowBack /> Back
+                <IoMdArrowBack />
                 </button>
                 <div className="container grid grid-cols-1 md:flex px-0 w-[400px] h-full md:w-[850px] md:h-[450px] md:mt-10 mt-[10%]" id="container">
                     <div className="form-container sign-in-container w-full md:w-[80%]">
