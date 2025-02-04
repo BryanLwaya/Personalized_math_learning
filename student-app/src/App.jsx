@@ -41,13 +41,18 @@ const App = () => {
           <Route path="/classes" element={<PrivateRoute><Classes /></PrivateRoute>} />
           <Route path="/view-class/:id" element={<PrivateRoute><ViewClass /></PrivateRoute>} />
           <Route path="/join-class" element={<PrivateRoute><JoinClass /></PrivateRoute>} />
-
+          <Route path="/view-task/:task_id" element={<PrivateRoute><ViewSingleTask /></PrivateRoute>} />
+          <Route path="/student/performance/:class_id" element={<PrivateRoute><StudentPerformance /></PrivateRoute>} />
+          <Route path="/student/comments/:class_id" element={<PrivateRoute><StudentComments /></PrivateRoute>} />
 
 
           {/* Teacher Routes */}
           <Route path="/teacher-dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
           <Route path="/create-class" element={<PrivateRoute><CreateClass /></PrivateRoute>} />
-          
+          <Route path="/teacher-class/:class_id" element={<PrivateRoute><TeacherClass /></PrivateRoute>} />
+          <Route path="/teacher/enrolled/:class_id" element={<PrivateRoute><EnrolledStudents /></PrivateRoute>} />
+          <Route path="/teacher/performance/:student_id/:class_id" element={<PrivateRoute><TrPerformanceView /></PrivateRoute>} />
+          <Route path="/teacher/comments/:class_id" element={<PrivateRoute><TeacherComments /></PrivateRoute>} />
 
           {/* Fallback Route */}
           <Route path="*" element={<NoPath />} />
