@@ -57,14 +57,29 @@ cd personalized-math-learning
 
 ### 2. Backend Setup (Flask)
 
-#### Install Dependencies
-
 ```sh
 cd backend
 python -m venv venv  # Create a virtual environment
-source venv/bin/activate  # Activate the virtual environment (Mac/Linux)
-venv\Scripts\activate  # Activate on Windows
-pip install -r requirements.txt  # Install dependencies
+```
+
+#### Activate Virtual Environment
+
+##### Mac/Linux
+
+```sh
+source venv/bin/activate
+```
+
+##### Windows
+
+```sh
+venv\Scripts\activate
+```
+
+#### Install Dependencies
+
+```sh
+pip install -r requirements.txt 
 ```
 
 #### Run the Backend Server
@@ -108,5 +123,3 @@ Contributions are welcome! If you'd like to improve this project, follow these s
 3. Commit your changes (`git commit -m "Add new feature"`).
 4. Push to your branch (`git push origin feature-branch`).
 5. Open a Pull Request.
-
----
